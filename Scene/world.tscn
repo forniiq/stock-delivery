@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuuxld8lqi268"]
 
-[ext_resource type="PackedScene" uid="uid://biftqseycapea" path="res://Player/player_1/Player_1.tscn" id="1_tk5dl"]
+[ext_resource type="PackedScene" uid="uid://n5n27ens0s3i" path="res://Player/vehicle/vehicle.tscn" id="1_64ynu"]
 
 [node name="World" type="Node2D"]
 
-[node name="Player_1" parent="." instance=ExtResource("1_tk5dl")]
-position = Vector2(417, 322)
-scale = Vector2(3, 3)
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_64ynu")]
+position = Vector2(295, 238)
