@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c00syb1e2jfkw"]
+
+[ext_resource type="Script" path="res://Main_menu.gd" id="1_ok1js"]
+[ext_resource type="FontFile" uid="uid://bm7e7aaxlijxw" path="res://HomeVideo-Regular.otf" id="2_eroi1"]
+
+[node name="Main_menu" type="Node2D"]
+script = ExtResource("1_ok1js")
+
+[node name="Game_name" type="Label" parent="."]
+offset_left = 405.0
+offset_top = 113.0
+offset_right = 748.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_eroi1")
+theme_override_font_sizes/font_size = 38
+text = "Stock delivery"
+
+[node name="Start" type="Button" parent="."]
+offset_left = 429.0
+offset_top = 234.0
+offset_right = 719.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_eroi1")
+theme_override_font_sizes/font_size = 21
+text = "Начать"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 430.0
+offset_top = 392.0
+offset_right = 720.0
+offset_bottom = 465.0
+theme_override_fonts/font = ExtResource("2_eroi1")
+theme_override_font_sizes/font_size = 21
+text = "Выйти"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
