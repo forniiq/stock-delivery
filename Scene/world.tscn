@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuuxld8lqi268"]
+[gd_scene load_steps=5 format=3 uid="uid://cuuxld8lqi268"]
 
-[ext_resource type="PackedScene" uid="uid://n5n27ens0s3i" path="res://Player/vehicle/vehicle.tscn" id="1_64ynu"]
+[ext_resource type="PackedScene" uid="uid://biftqseycapea" path="res://Player/player_1/Player_1.tscn" id="1_tk5dl"]
+[ext_resource type="PackedScene" uid="uid://blx5ibyd34ivk" path="res://assets/box/box.tscn" id="2_6m0j1"]
+[ext_resource type="FontFile" uid="uid://bm7e7aaxlijxw" path="res://HomeVideo-Regular.otf" id="3_6iwdf"]
+[ext_resource type="Script" path="res://Scene/Label.gd" id="4_q73tb"]
 
 [node name="World" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_64ynu")]
-position = Vector2(295, 238)
+[node name="Label" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 52.0
+offset_right = 211.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_6iwdf")
+theme_override_font_sizes/font_size = 26
+text = "Inventory"
+script = ExtResource("4_q73tb")
+
+[node name="box" parent="." instance=ExtResource("2_6m0j1")]
+position = Vector2(518, 323)
+
+[node name="Player_1" parent="." instance=ExtResource("1_tk5dl")]
+position = Vector2(251, 165)
+scale = Vector2(3, 3)

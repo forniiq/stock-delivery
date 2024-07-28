@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://biftqseycapea"]
+[gd_scene load_steps=47 format=3 uid="uid://biftqseycapea"]
 
 [ext_resource type="Script" path="res://Player/player_1/Player_1.gd" id="1_mmvxh"]
 [ext_resource type="Texture2D" uid="uid://pfe2g4ocnaew" path="res://Player/Base Character - Free/walk.png" id="1_v3tpf"]
@@ -321,28 +321,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p143s"]
-size = Vector2(13, 14)
-
 [node name="Player_1" type="CharacterBody2D"]
 script = ExtResource("1_mmvxh")
-speed = null
-run_speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_41rhv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uvviq")
 animation = &"run_l"
-
-[node name="InteractionAreaPlayer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionAreaPlayer"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_p143s")
-
-[connection signal="body_entered" from="InteractionAreaPlayer" to="." method="on_vehicle_area_entered"]
-[connection signal="body_exited" from="InteractionAreaPlayer" to="." method="on_vehicle_area_exited"]

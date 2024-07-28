@@ -4,7 +4,12 @@ extends CharacterBody2D
 @export var run_speed = 250
 @onready var anim = "idle_r"
 @onready var animate = $AnimatedSprite2D
+@export var inventory = ""
+@export var inventory_size = 1
 
+func _ready():
+	pass
+#Действия
 func get_input():
 	velocity = Vector2()
 	var input_direction = Input.get_vector("A","D","W","S")
@@ -14,18 +19,19 @@ func get_input():
 	else:
 		velocity = input_direction * speed
 	
+#Анимации
 func animation():
 	if Input.is_action_pressed("shift"):
 		if velocity.length() == run_speed and Input.is_action_pressed("A"):
-				anim = "walk_l"
+				anim = "run_l"
 		if velocity.length() == run_speed and Input.is_action_pressed("D"):
-				anim = "walk_r"
+				anim = "run_r"
 		if velocity.length() == run_speed:
 			if Input.is_action_pressed("S") or Input.is_action_pressed("W"):
 				if anim == "walk_r" or anim == "idle_r" or anim == "run_r":
-						anim = "walk_r"
-				if anim == "walk_l" or anim == "idle_l":
-						anim = "walk_l"
+						anim = "run_r"
+				if anim == "walk_l" or anim == "idle_l" or anim == "run_l":
+						anim = "run_l"
 	else:
 		if velocity.length() == speed and Input.is_action_pressed("A"):
 				anim = "walk_l"
@@ -57,9 +63,14 @@ func animation():
 	if anim == "run_l":
 		animate.play("run_l")
 	
-	print(anim)
-	
+#Физические процессы
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 	animation()
+
+signal interact
+
+func _process(delta):
+	if Input.is_action_just_pressed("E"):
+		emit_signal("interact")

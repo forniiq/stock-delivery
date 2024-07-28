@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://blx5ibyd34ivk"]
+
+[ext_resource type="Texture2D" uid="uid://dsjadgaarwcm2" path="res://Player/vehicle/icon.svg" id="1_2gmn6"]
+[ext_resource type="Script" path="res://assets/box/box.gd" id="1_eiok0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if0hq"]
+size = Vector2(44, 44)
+
+[node name="box" type="Area2D"]
+script = ExtResource("1_eiok0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("1_2gmn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_if0hq")
+
+[connection signal="body_entered" from="." to="." method="_on_Box_body_entered"]
