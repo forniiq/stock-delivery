@@ -1,23 +1,27 @@
 extends CharacterBody2D
 
-@export var speed = 150
-@export var run_speed = 250
-@onready var anim = "idle_r"
-@onready var animate = $AnimatedSprite2D
-@export var inventory = ""
-@export var inventory_size = 1
+@export var speed = 150 #Скорость
+@export var run_speed = 250 #Скорость бега
+@onready var anim = "idle_r" #Статус анимации
+@onready var animate = $AnimatedSprite2D #Ссылка на анимации
+@export var inventory = "" #Передмет в инвентаре
+@export var inventory_size = 1 #Размер инвентаря
+var controlling = true #Статус управления
+var in_vehicle = false
 
 func _ready():
 	pass
+
 #Действия
 func get_input():
-	velocity = Vector2()
-	var input_direction = Input.get_vector("A","D","W","S")
-	input_direction = input_direction.normalized()
-	if Input.is_action_pressed("shift"):
-		velocity = input_direction * run_speed
-	else:
-		velocity = input_direction * speed
+	if controlling:
+		velocity = Vector2()
+		var input_direction = Input.get_vector("A","D","W","S")
+		input_direction = input_direction.normalized()
+		if Input.is_action_pressed("shift"):
+			velocity = input_direction * run_speed
+		else:
+			velocity = input_direction * speed
 	
 #Анимации
 func animation():
@@ -70,7 +74,11 @@ func _physics_process(_delta):
 	animation()
 
 signal interact
+signal seat
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("E"):
 		emit_signal("interact")
+		
+	if Input.is_action_just_pressed("E"):
+		emit_signal("seat")

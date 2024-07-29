@@ -27,5 +27,8 @@ shape = SubResource("RectangleShape2D_idxdb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_jn6dl")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(24, -80)
+
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

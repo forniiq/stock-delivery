@@ -10,18 +10,20 @@ var drift_strength = 0.8
 
 # Переменные для движения
 var rotation_velocity = 0
+var controlling = false
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 
-	if Input.is_action_pressed("S"):
-		input_vector.y -= 1
-	if Input.is_action_pressed("W"):
-		input_vector.y += 1
-	if Input.is_action_pressed("A"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("D"):
-		input_vector.x += 1
+	if controlling:
+		if Input.is_action_pressed("S"):
+			input_vector.y -= 1
+		if Input.is_action_pressed("W"):
+			input_vector.y += 1
+		if Input.is_action_pressed("A"):
+			input_vector.x -= 1
+		if Input.is_action_pressed("D"):
+			input_vector.x += 1
 
 	# Нормализуем вектор ввода
 	input_vector = input_vector.normalized()
@@ -65,3 +67,17 @@ func _physics_process(delta):
 	# Применяем движение и поворот
 	move_and_slide()
 	rotation += rotation_velocity
+
+
+func _on_interaction_area_body_entered(body):
+	if body.name == "Player_1":
+		body.connect("seat", Callable(self, "_on_seat"))
+		
+func _on_seat():
+	var player_1 = $"../Player_1"
+	if player_1 != null:
+		if player_1.inventory == "":
+			player_1.controlling = false
+			player_1.queue_free()
+			player_1.in_vehicle = true
+			controlling = true

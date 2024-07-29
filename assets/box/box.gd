@@ -6,4 +6,6 @@ func _on_Box_body_entered(body):
 
 # Функция для обработки взаимодействия
 func _on_interact():
-	queue_free()
+	if $"../Player_1".inventory == "":
+		$"../Player_1".inventory = "box"
+		queue_free()
