@@ -11,6 +11,7 @@ var drift_strength = 0.8
 # Переменные для движения
 var rotation_velocity = 0
 var controlling = false
+var in_area = false
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -71,13 +72,24 @@ func _physics_process(delta):
 
 func _on_interaction_area_body_entered(body):
 	if body.name == "Player_1":
-		body.connect("seat", Callable(self, "_on_seat"))
 		
+		in_area = true
+		seat()
+
+func _on_interaction_area_body_exited(body):
+	if body.name == "Player_1":
+		in_area = false
+		
+func seat():
+	if Input.is_action_pressed("E"):
+		_on_seat()
+
 func _on_seat():
-	var player_1 = $"../Player_1"
-	if player_1 != null:
-		if player_1.inventory == "":
-			player_1.controlling = false
-			player_1.queue_free()
-			player_1.in_vehicle = true
-			controlling = true
+	if in_area:
+		var player_1 = get_node("../Player_1")
+		if player_1 != null:
+			if player_1.inventory == "":
+				player_1.controlling = false
+				player_1.hide()
+				player_1.in_vehicle = true
+				controlling = true

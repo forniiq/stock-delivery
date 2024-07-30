@@ -18,3 +18,4 @@ texture = ExtResource("2_akneb")
 shape = SubResource("RectangleShape2D_if0hq")
 
 [connection signal="body_entered" from="." to="." method="_on_Box_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

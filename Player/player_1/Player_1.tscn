@@ -1,9 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://biftqseycapea"]
+[gd_scene load_steps=49 format=3 uid="uid://biftqseycapea"]
 
 [ext_resource type="Script" path="res://Player/player_1/Player_1.gd" id="1_mmvxh"]
 [ext_resource type="Texture2D" uid="uid://pfe2g4ocnaew" path="res://Player/Base Character - Free/walk.png" id="1_v3tpf"]
 [ext_resource type="Texture2D" uid="uid://cxotiqvgg2qfb" path="res://Player/Base Character - Free/idle.png" id="2_dyymq"]
 [ext_resource type="Texture2D" uid="uid://c6awcmu8bfxv4" path="res://Player/Base Character - Free/run.png" id="3_fitp1"]
+[ext_resource type="Texture2D" uid="uid://cwsjq8pxdonn2" path="res://Player/player_1/Press_E.png" id="5_5dbma"]
+[ext_resource type="Script" path="res://Player/player_1/PressE.gd" id="6_5daoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41rhv"]
 size = Vector2(11, 14)
@@ -332,3 +334,10 @@ shape = SubResource("RectangleShape2D_41rhv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uvviq")
 animation = &"run_l"
+
+[node name="PressE" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.33333, -10.4444)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_5dbma")
+script = ExtResource("6_5daoe")

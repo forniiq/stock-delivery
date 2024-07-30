@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var inventory_size = 1 #Размер инвентаря
 var controlling = true #Статус управления
 var in_vehicle = false
+var on_area = false
 
 func _ready():
 	pass
