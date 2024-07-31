@@ -308,3 +308,9 @@ position = Vector2(9.33333, -10.4444)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_5dbma")
 script = ExtResource("6_5daoe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 4.0

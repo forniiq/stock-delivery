@@ -25,7 +25,6 @@ func _on_body_exited(body):
 func show_open_box():
 	if $"../Player_1" != null and on_inventory == true:
 		position = $"../Player_1".position
-		z_index = $"../Player_1".z_index - 1
 		on_inventory = false
 		$"../Player_1".inventory = ""
 		$CollisionShape2D.disabled = false
