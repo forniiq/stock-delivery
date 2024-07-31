@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsc8vuckhpn8b"]
+
+[ext_resource type="Texture2D" uid="uid://8esqt0nyw1ta" path="res://assets/items/cube_purple/cube_purple.png" id="1_1wv6o"]
+[ext_resource type="Script" path="res://assets/items/cube_purple/cube_purple.gd" id="1_dp01h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pnst"]
+size = Vector2(30, 30)
+
+[node name="cube_purple" type="Area2D"]
+script = ExtResource("1_dp01h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1wv6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1pnst")
+
+[connection signal="body_entered" from="." to="." method="_on_Box_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

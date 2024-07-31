@@ -39,14 +39,3 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
-
-
-signal interact
-signal seat
-
-func _process(_delta):
-	if Input.is_action_just_pressed("E"):
-		emit_signal("interact")
-		
-	if Input.is_action_just_pressed("E"):
-		emit_signal("seat")

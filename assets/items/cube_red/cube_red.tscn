@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc3ppcvet0tep"]
+
+[ext_resource type="Texture2D" uid="uid://7dswpjj0gssc" path="res://assets/items/cube_red/cube_red.png" id="1_bhv4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cci63"]
+size = Vector2(30, 30)
+
+[node name="cube_red" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bhv4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cci63")

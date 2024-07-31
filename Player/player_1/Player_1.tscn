@@ -300,7 +300,7 @@ shape = SubResource("RectangleShape2D_41rhv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uvviq")
-animation = &"down"
+animation = &"walk"
 
 [node name="PressE" type="Sprite2D" parent="."]
 visible = false
