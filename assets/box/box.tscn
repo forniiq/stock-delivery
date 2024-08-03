@@ -1,20 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbfblovex7wa5"]
+[gd_scene load_steps=7 format=3 uid="uid://cbfblovex7wa5"]
 
 [ext_resource type="Script" path="res://assets/box/box.gd" id="1_eiok0"]
 [ext_resource type="Texture2D" uid="uid://chgta120qvsdi" path="res://assets/box/box.png" id="2_akneb"]
+[ext_resource type="Texture2D" uid="uid://dkxna5xaynwhq" path="res://assets/box/box_open.png" id="3_lkpsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f3n7"]
-size = Vector2(44, 44)
+size = Vector2(24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ui0sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_akneb")
+}],
+"loop": false,
+"name": &"box",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lkpsm")
+}],
+"loop": false,
+"name": &"box_open",
+"speed": 1.0
+}]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s2ia"]
 
 [node name="box" type="Area2D"]
 script = ExtResource("1_eiok0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.833, 1.833)
-texture = ExtResource("2_akneb")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3f3n7")
 
-[connection signal="body_entered" from="." to="." method="_on_Box_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ui0sb")
+animation = &"box_open"
+autoplay = "box_open"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4s2ia")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
