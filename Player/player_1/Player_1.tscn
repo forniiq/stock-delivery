@@ -743,7 +743,8 @@ _data = {
 script/source = "extends Sprite2D
 
 func _process(_delta):
-	if $\"..\".on_area == true:
+	var area_node = $Area2D
+	if area_node and area_node.is_in_group(\"player_areas\"):
 		show()
 	else:
 		hide()
